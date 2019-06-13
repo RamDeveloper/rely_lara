@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('home','ProductAjaxController');
+Route::resource('ajaxproducts','ProductAjaxController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
