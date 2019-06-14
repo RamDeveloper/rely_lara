@@ -1,0 +1,5 @@
+[14-Jun-2019 19:35:14 Asia/Calcutta] PHP Warning:  Use of undefined constant top - assumed 'top' (this will throw an Error in a future version of PHP) in /var/www/html/work/rely_lara/config/adminlte.php on line 61
+[14-Jun-2019 19:35:14 Asia/Calcutta] PHP Warning:  Use of undefined constant nav - assumed 'nav' (this will throw an Error in a future version of PHP) in /var/www/html/work/rely_lara/config/adminlte.php on line 61
+[14-Jun-2019 19:35:14 Asia/Calcutta] PHP Warning:  A non-numeric value encountered in /var/www/html/work/rely_lara/config/adminlte.php on line 61
+[14-Jun-2019 19:35:14 Asia/Calcutta] PHP Warning:  A non-numeric value encountered in /var/www/html/work/rely_lara/config/adminlte.php on line 61
+[14-Jun-2019 19:35:19 Asia/Calcutta] PHP Warning:  Use of undefined constant fixed - assumed 'fixed' (this will throw an Error in a future version of PHP) in /var/www/html/work/rely_lara/config/adminlte.php on line 61

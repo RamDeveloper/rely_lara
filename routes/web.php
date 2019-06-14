@@ -14,9 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('home','ProductAjaxController');
-Route::resource('ajaxproducts','ProductAjaxController');
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home')->middleware('auth');
+Route::resource('admin/products','ProductAjaxController');
+Route::resource('ajaxproducts','ProductAjaxController');
+// Route::resource('ajaxproducts/index','ProductAjaxController');

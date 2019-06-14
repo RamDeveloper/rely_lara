@@ -15,9 +15,9 @@ return [
 
     'title' => 'RelyLara',
 
-    'title_prefix' => 'R',
+    'title_prefix' => 'Ram | ',
 
-    'title_postfix' => 'L',
+    'title_postfix' => '',
 
     /*
     |--------------------------------------------------------------------------

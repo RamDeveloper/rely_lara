@@ -19,6 +19,11 @@ class ProductAjaxController extends Controller
         //
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request){
       if($request->ajax()){
         $data = Product::latest()->get();
@@ -32,6 +37,28 @@ class ProductAjaxController extends Controller
                           ->rawColumns(['action'])
                           ->make(true);
       }
-      return view('productAjax',compact('products'));
+      return view('admin.ajaxproducts',compact('products'));
     }
+
+    public function store(Request $request)
+    {
+        Product::updateOrCreate(['id' => $request->product_id],
+                ['name' => $request->name, 'detail' => $request->detail]);
+
+        return response()->json(['success'=>'Product saved successfully.']);
+    }
+
+    public function edit($id)
+   {
+       $product = Product::find($id);
+       return response()->json($product);
+   }
+
+   public function destroy($id)
+    {
+        Product::find($id)->delete();
+
+        return response()->json(['success'=>'Product deleted successfully.']);
+    }
+
 }
