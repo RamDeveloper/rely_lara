@@ -37,7 +37,7 @@ class ProductAjaxController extends Controller
                           ->rawColumns(['action'])
                           ->make(true);
       }
-      return view('admin/productAjax',compact('products'));
+      return view('admin.productAjax',compact('products'));
     }
 
     public function store(Request $request)

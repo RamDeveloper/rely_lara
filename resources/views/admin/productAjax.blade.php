@@ -55,7 +55,6 @@
 </div>
 </div>
 </div>
-
 <script type="text/javascript">
   $(function () {
 
@@ -68,7 +67,7 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('admin/productsajax.index') }}",
+        ajax: "{{ route('ajaxproducts.index') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'name', name: 'name'},
@@ -87,7 +86,7 @@
 
     $('body').on('click', '.editProduct', function () {
       var product_id = $(this).data('id');
-      $.get("{{ route('admin/productsajax.index') }}" +'/' + product_id +'/edit', function (data) {
+      $.get("{{ route('ajaxproducts.index') }}" +'/' + product_id +'/edit', function (data) {
           $('#modelHeading').html("Edit Product");
           $('#saveBtn').val("edit-user");
           $('#ajaxModel').modal('show');
@@ -103,7 +102,7 @@
 
         $.ajax({
           data: $('#productForm').serialize(),
-          url: "{{ route('admin/productsajax.store') }}",
+          url: "{{ route('ajaxproducts.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -127,7 +126,7 @@
 
         $.ajax({
             type: "DELETE",
-            url: "{{ route('admin/productsajax.store') }}"+'/'+product_id,
+            url: "{{ route('ajaxproducts.store') }}"+'/'+product_id,
             success: function (data) {
                 table.draw();
             },
