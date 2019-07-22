@@ -1,9 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div class="container">
-    <h1>Laravel 5.8 Ajax CRUD tutorial using Datatable - ItSolutionStuff.com</h1>
+  <div class="col-md-8">
+    <div class="row justify-content-center">
+<div class="container">
     <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Product</a>
     <table class="table table-bordered data-table">
         <thead>
@@ -51,7 +52,10 @@
         </div>
     </div>
 </div>
-@section('js')
+</div>
+</div>
+</div>
+
 <script type="text/javascript">
   $(function () {
 
@@ -64,7 +68,7 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('ajaxproducts.index') }}",
+        ajax: "{{ route('admin/productsajax.index') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'name', name: 'name'},
@@ -73,8 +77,7 @@
         ]
     });
 
-    $('body').on('click', '#createNewProduct' ,function () {
-      console.log('adsf');
+    $('#createNewProduct').click(function () {
         $('#saveBtn').val("create-product");
         $('#product_id').val('');
         $('#productForm').trigger("reset");
@@ -84,7 +87,7 @@
 
     $('body').on('click', '.editProduct', function () {
       var product_id = $(this).data('id');
-      $.get("{{ route('ajaxproducts.index') }}" +'/' + product_id +'/edit', function (data) {
+      $.get("{{ route('admin/productsajax.index') }}" +'/' + product_id +'/edit', function (data) {
           $('#modelHeading').html("Edit Product");
           $('#saveBtn').val("edit-user");
           $('#ajaxModel').modal('show');
@@ -100,7 +103,7 @@
 
         $.ajax({
           data: $('#productForm').serialize(),
-          url: "{{ route('ajaxproducts.store') }}",
+          url: "{{ route('admin/productsajax.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -124,7 +127,7 @@
 
         $.ajax({
             type: "DELETE",
-            url: "{{ route('ajaxproducts.store') }}"+'/'+product_id,
+            url: "{{ route('admin/productsajax.store') }}"+'/'+product_id,
             success: function (data) {
                 table.draw();
             },
@@ -136,5 +139,4 @@
 
   });
 </script>
-@stop
 @endsection
