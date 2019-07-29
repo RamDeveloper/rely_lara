@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 Auth::routes();
-Route::get('/admin', 'HomeController@index')->name('home')->middleware('auth');
-Route::resource('admin/products','ProductAjaxController');
+Route::get('/admin', 'ProductAjaxController@index')->name('dashboard')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('admin/products','ProductAjaxController')->middleware('auth');
 Route::resource('ajaxproducts','ProductAjaxController');
 // Route::resource('ajaxproducts/index','ProductAjaxController');

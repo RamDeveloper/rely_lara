@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h1>Laravel 5.8 Ajax CRUD tutorial using Datatable - ItSolutionStuff.com</h1>
+    <h1>List Products</h1>
     <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Product</a>
     <table class="table table-bordered data-table">
         <thead>
