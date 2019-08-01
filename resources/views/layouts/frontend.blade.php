@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container d-flex align-items-center">
-                <div> <img class="pr-2" src="img/rely_logo.jpg" style="height:30px;border-right:2px solid #555"></div>
+                <div> <img class="pr-2" src="/img/rely_logo.jpg" style="height:30px;border-right:2px solid #555"></div>
                 <div class="pl-3">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ 'RelyLara'}}
@@ -54,7 +54,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

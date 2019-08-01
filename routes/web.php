@@ -17,6 +17,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/admin', 'ProductAjaxController@index')->name('dashboard')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::resource('admin/products','ProductAjaxController')->middleware('auth');
 Route::resource('ajaxproducts','ProductAjaxController');
 // Route::resource('ajaxproducts/index','ProductAjaxController');
