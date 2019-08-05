@@ -39,11 +39,16 @@ class PostsController extends Controller
            'image' => $imagepath,
            'user_id' => $data['user_id']
        ]);
-       
+
        //auth()->user()->posts()->create($data); //can use this single query instead of above two queries.
 
         return redirect('/profile/'.auth()->user()->id);
        }
    }
+
+   public function show($post){
+        $post = Post::findOrFail($post);
+        return view('posts.show',compact('post'));
+    }
 
 }
