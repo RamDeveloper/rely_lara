@@ -67,8 +67,14 @@ html, body {
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 80%;
-  color:white;
+  color:#000;
+  font-size:22px;
   text-align: center;
+}
+.welcome-text a{
+    font-size:22px;
+    color:#000;
+    text-transform:Capitalize;
 }
 </style>
 
@@ -77,12 +83,12 @@ html, body {
     <div class="">
         <div class="content welcome-text">
             <div class="title m-b-md">
-                Welcome to RelyLara
+              RelyLara
             </div>
 
             <div class="links">
                 <p>Just another clone of Instagram </p>
-                Coded by<a href="https://ramdeveloper.github.io">Ramkumar</a>
+                ~ <a href="https://ramdeveloper.github.io">Ramkumar</a>
             </div>
         </div>
     </div>
