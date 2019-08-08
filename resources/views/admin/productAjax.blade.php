@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="container">
-  <div class="col-md-8">
-    <div class="row justify-content-center">
-<div class="container">
+    <h1>List Products</h1>
     <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Product</a>
     <table class="table table-bordered data-table">
         <thead>

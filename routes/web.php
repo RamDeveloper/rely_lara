@@ -15,7 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-Route::get('/admin', 'HomeController@index')->name('home')->middleware('auth');
-// Route::get('admin/productsajax', 'ProductAjaxController@index')->name('productsajax');
-// Route::resource('productsajax','ProductAjaxController');
+Route::get('/admin', 'ProductAjaxController@index')->name('dashboard')->middleware('auth');
+Route::resource('admin/products','ProductAjaxController')->middleware('auth');
 Route::resource('ajaxproducts','ProductAjaxController');
+// Route::resource('ajaxproducts/index','ProductAjaxController');
+
+Route::get('/home', 'HomeController@index')->name('welcome');
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
+Route::get('/p/create','PostsController@create')->name('p.create');
+Route::get('/posts/{post}','PostsController@show')->name('posts.show');
+Route::get('/p','PostsController@index')->name('p');
+Route::post('/p','PostsController@store');
+Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
+
