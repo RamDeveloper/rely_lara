@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div class="container">
     <h1>List Products</h1>
     <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Product</a>
@@ -51,7 +50,9 @@
         </div>
     </div>
 </div>
-@section('js')
+</div>
+</div>
+</div>
 <script type="text/javascript">
   $(function () {
 
@@ -73,8 +74,7 @@
         ]
     });
 
-    $('body').on('click', '#createNewProduct' ,function () {
-      console.log('adsf');
+    $('#createNewProduct').click(function () {
         $('#saveBtn').val("create-product");
         $('#product_id').val('');
         $('#productForm').trigger("reset");
@@ -136,5 +136,4 @@
 
   });
 </script>
-@stop
 @endsection
