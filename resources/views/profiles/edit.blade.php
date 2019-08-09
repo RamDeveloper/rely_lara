@@ -15,7 +15,7 @@
         
             <div class="row">
                 <label for="title" class="col-form-label">{{ __('Title') }}</label>
-                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('name') }}" autocomplete="name" autofocus>
+                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('name') ?? $user->profile->title }}" autocomplete="name" autofocus>
                 @error('title')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -25,7 +25,7 @@
 
             <div class="row">
                 <label for="description" class="col-form-label">{{ __('Description') }}</label>
-                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('name') }}" autocomplete="name" autofocus>
+                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') ?? $user->profile->description }}" autocomplete="name" autofocus>
                 @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -35,7 +35,7 @@
 
             <div class="row">
                 <label for="url" class="col-form-label">{{ __('URL') }}</label>
-                <input id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('name') }}" autocomplete="name" autofocus>
+                <input id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url')?? $user->profile->url  }}" autocomplete="name" autofocus>
                 @error('url')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
