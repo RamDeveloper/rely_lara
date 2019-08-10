@@ -23,7 +23,7 @@ Route::resource('ajaxproducts','ProductAjaxController');
 Route::get('/home', 'HomeController@index')->name('welcome');
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/p/create','PostsController@create')->name('p.create');
-Route::get('/posts/{post}','PostsController@show')->name('posts.show');
+Route::get('/p/{post}','PostsController@show')->name('p.show');
 Route::get('/p','PostsController@index')->name('p');
 Route::post('/p','PostsController@store');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
