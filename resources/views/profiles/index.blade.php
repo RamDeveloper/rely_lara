@@ -9,7 +9,7 @@
         <div class="col-md-9">
         <div class="d-flex pt-5 justify-content-left align-items-baseline">
         <h1>{{$user->username}}</h1>
-        <button class="btn btn-primary ml-5 mr-10">Follow</button>
+        <followbutton user-id="{{$user->id}}" follows="{{$follows}}"></followbutton>
         @can('update',$user->profile)
         <a href="{{route('p.create')}}" class="pl-5">Add New Post</a>
         @endcan

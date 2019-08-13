@@ -29,3 +29,5 @@ Route::post('/p','PostsController@store');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
 
+//Follow button using axios
+Route::post('/follow/{user}', 'FollowsController@store');

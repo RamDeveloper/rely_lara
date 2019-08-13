@@ -10,8 +10,10 @@ class ProfilesController extends Controller
 {
     public function index($user)
     {
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user) : false;
+        
         $user = User::findOrFail($user);
-        return view('profiles.index',compact('user'));
+        return view('profiles.index',compact('user','follows'));
     }
 
     public function edit(User $user)
