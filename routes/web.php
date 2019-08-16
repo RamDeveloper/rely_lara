@@ -1,4 +1,5 @@
 <?php
+use App\Mail\NewUserWelcomeMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,7 @@ Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.upda
 
 //Follow button using axios
 Route::post('/follow/{user}', 'FollowsController@store');
+
+Route::get('/email',function(){
+    return new NewUserWelcomeMail();
+});

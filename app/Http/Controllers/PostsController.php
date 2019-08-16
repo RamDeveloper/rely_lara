@@ -16,7 +16,11 @@ class PostsController extends Controller
 
    public function index(){
         $followingUsers = auth()->user()->following()->pluck('profiles.user_id');
-        $posts = Post::whereIn('user_id',$followingUsers)->orderBy('created_at')->paginate(2);
+        if(!$followingUsers->isEmpty()){
+            $posts = Post::whereIn('user_id',$followingUsers)->orderBy('created_at')->paginate(2);
+        }else{
+            $posts = Post::inRandomOrder()->limit(3)->paginate(2);
+        }
         return view('posts.index',compact('posts'));
    }
 
