@@ -20,9 +20,9 @@
         @endcan
 
         <ul class="d-flex list-unstyled">
-        <li class="pr-5"><a href=""><strong>{{$user->posts->count()}}</strong> posts</a></li>
-        <li class="pr-5" ><a href=""><strong>206</strong> followers</a></li>
-        <li class="pr-5"><a  href=""><strong>441</strong> following</a></li>
+        <li class="pr-5"><a href=""><strong>{{$postsCount}}</strong> posts</a></li>
+        <li class="pr-5" ><a href=""><strong>{{$followersCount}}</strong> followers</a></li>
+        <li class="pr-5"><a  href=""><strong>{{$followingsCount}}</strong> following</a></li>
         </ul>
         <div><h4 >{{$user->profile->title}} </h4><span>{{$user->profile->description}}</span> <br>
         <a href="{{$user->profile->url ?? '#'}}" >{{ $user->profile->url ?? 'Not Available'}}</a> </div>

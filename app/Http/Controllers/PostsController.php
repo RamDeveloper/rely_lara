@@ -15,7 +15,9 @@ class PostsController extends Controller
     }
 
    public function index(){
-        return view('posts.index');
+        $followingUsers = auth()->user()->following()->pluck('profiles.user_id');
+        $posts = Post::whereIn('user_id',$followingUsers)->orderBy('created_at')->paginate(2);
+        return view('posts.index',compact('posts'));
    }
 
    public function create(){

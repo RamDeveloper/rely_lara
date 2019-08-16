@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostsController@index');
 Auth::routes();
 Route::get('/admin', 'ProductAjaxController@index')->name('dashboard')->middleware('auth');
 Route::resource('admin/products','ProductAjaxController')->middleware('auth');
