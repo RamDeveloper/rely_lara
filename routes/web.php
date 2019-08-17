@@ -1,4 +1,5 @@
 <?php
+use App\Mail\NewUserWelcomeMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,9 +12,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostsController@index');
 Auth::routes();
 Route::get('/admin', 'ProductAjaxController@index')->name('dashboard')->middleware('auth');
 Route::resource('admin/products','ProductAjaxController')->middleware('auth');
@@ -23,9 +22,15 @@ Route::resource('ajaxproducts','ProductAjaxController');
 Route::get('/home', 'HomeController@index')->name('welcome');
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/p/create','PostsController@create')->name('p.create');
-Route::get('/posts/{post}','PostsController@show')->name('posts.show');
+Route::get('/p/{post}','PostsController@show')->name('p.show');
 Route::get('/p','PostsController@index')->name('p');
 Route::post('/p','PostsController@store');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
 
+//Follow button using axios
+Route::post('/follow/{user}', 'FollowsController@store');
+
+Route::get('/email',function(){
+    return new NewUserWelcomeMail();
+});
