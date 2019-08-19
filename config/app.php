@@ -119,7 +119,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY','relycode'),
+    'key' => env('APP_KEY','base64:GoKHDq65J6xZr5BLCUrbLacKfW4JdURNSC7eD28W1Ks='),
 
     'cipher' => 'AES-256-CBC',
 
