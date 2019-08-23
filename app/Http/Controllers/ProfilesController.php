@@ -14,24 +14,15 @@ class ProfilesController extends Controller
         $follows = (auth()->user()) ? auth()->user()->following->contains($user) : false;
         // dd($follows);
         $user = User::findOrFail($user);
-        $postsCount = Cache::remember(
-            'count.post.'.$user->id, 
-            now()->addSeconds(30) ,
-            function() use ($user){
-              $user->posts->count();
-        });
-        $followersCount =  Cache::remember(
-            'count.followers.'.$user->id, 
-            now()->addSeconds(30) ,
-            function() use ($user){
-                $user->profile->followers->count();
-        });
-        $followingsCount =  Cache::remember(
-            'count.followings.'.$user->id, 
-            now()->addSeconds(30) ,
-            function() use ($user){
-               $user->following->count();
-        });
+        // $postsCount = Cache::remember(
+        //     'count.post.'.$user->id, 
+        //     now()->addSeconds(30) ,
+        //     function() use ($user){
+        //       $user->posts->count();
+        // });
+        $postsCount = $user->posts->count();
+        $followersCount = $user->profile->followers->count();
+        $followingsCount = $user->following->count();
         
         return view('profiles.index',compact('user','follows','postsCount','followersCount','followingsCount'));
     }

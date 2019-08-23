@@ -53,8 +53,9 @@ class PostsController extends Controller
    }
 
    public function show($post){
+        $follows = (auth()->user()) ? auth()->user()->following->contains($post) : false;
         $post = Post::findOrFail($post);
-        return view('posts.show',compact('post'));
+        return view('posts.show',compact('post','follows'));
     }
 
 }
