@@ -5,7 +5,7 @@
     <div class="row pt-5">
     @if($post)
     <div class="col-8 pl-3 w-100">
-        <a href="{{'/p/'.$post->id}}"><img src="/storage/{{$post->image}}" class="w-100"/></a>
+        <a href="{{'/p/'.$post->id}}"><img src="data:image/png;base64,<?php echo base64_encode($post->image) ?>" class="w-100"/></a>
     </div>
     <div class="col-3 pl-3">
     <div class="d-flex align-items-center">

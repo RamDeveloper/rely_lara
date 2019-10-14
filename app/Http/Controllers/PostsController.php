@@ -35,11 +35,13 @@ class PostsController extends Controller
         'image'=>'required|image'
        ]);
        $data['user_id'] = auth()->user()->id;
-       $imagepath = request('image')->store('uploads','public');
+    //    $imagepath = request('image')->store('uploads','public');
 
-       $image = Image::make(public_path("storage/{$imagepath}"))->fit(800,800);
-       $image->save();
-
+    //    $image = Image::make(public_path("storage/{$imagepath}"))->fit(800,800);
+    //    $image->save(); 
+    //Due to Upload path heroku restriction we changed folder to DB
+        $imagepath = file_get_contents($data['image']);
+        
        Post::create([
            'caption' => $data['caption'],
            'image' => $imagepath,

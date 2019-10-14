@@ -6,7 +6,7 @@
     @foreach($posts as $key=> $post)
     <div class="row">
         <div class="col-6 offset-3">
-            <a href="{{'/p/'.$post->id}}"><img src="/storage/{{$post->image}}" class="w-100"/></a>
+            <a href="{{'/p/'.$post->id}}"><img src="data:image/png;base64,<?php echo base64_encode($post->image) ?>" class="w-100"/></a>
         </div>
     </div>
 
