@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3 p-5">
-            <img class="rounded-circle w-100" src="{{$user->profile->profileImage()}}">
+        <!-- <img src="data:image/png;base64,<?php echo base64_encode($user->profile->image) ?>"> -->
+            <img class="rounded-circle w-100" src="data:image/png;base64,<?php echo base64_encode($user->profile->image) ?>">
         </div>
         <div class="col-md-9">
         <div class="d-flex pt-5 justify-content-left align-items-baseline">
@@ -32,7 +33,7 @@
     <div class="row pt-5">
     @foreach($user->posts as $post)
     <div class="col-md-4 pl-3 mb-3">
-        <a href="{{'/p/'.$post->id}}"><img src="/storage/{{$post->image}}" class="w-100"/></a>
+        <a href="{{'/p/'.$post->id}}"><img src="data:image/png;base64,<?php echo base64_encode($post->image) ?>" class="w-100"/></a>
     </div>
     @endforeach
     </div>

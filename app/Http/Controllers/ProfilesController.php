@@ -14,24 +14,15 @@ class ProfilesController extends Controller
         $follows = (auth()->user()) ? auth()->user()->following->contains($user) : false;
         // dd($follows);
         $user = User::findOrFail($user);
-        $postsCount = Cache::remember(
-            'count.post.'.$user->id, 
-            now()->addSeconds(30) ,
-            function() use ($user){
-              $user->posts->count();
-        });
-        $followersCount =  Cache::remember(
-            'count.followers.'.$user->id, 
-            now()->addSeconds(30) ,
-            function() use ($user){
-                $user->profile->followers->count();
-        });
-        $followingsCount =  Cache::remember(
-            'count.followings.'.$user->id, 
-            now()->addSeconds(30) ,
-            function() use ($user){
-               $user->following->count();
-        });
+        // $postsCount = Cache::remember(
+        //     'count.post.'.$user->id, 
+        //     now()->addSeconds(30) ,
+        //     function() use ($user){
+        //       $user->posts->count();
+        // });
+        $postsCount = $user->posts->count();
+        $followersCount = $user->profile->followers->count();
+        $followingsCount = $user->following->count();
         
         return view('profiles.index',compact('user','follows','postsCount','followersCount','followingsCount'));
     }
@@ -53,9 +44,15 @@ class ProfilesController extends Controller
            ]);
 
         if(request('image')){
-            $imagepath = request('image')->store('uploads','public');
-            $image = Image::make(public_path("storage/{$imagepath}"))->fit(600,600);
-            $image->save();
+            // $imagepath = request('image')->store('uploads','public');
+            // $image = Image::make(public_path("storage/{$imagepath}"))->fit(600,600);
+            // $image->save();
+            // dd($data['image']->getPathName());
+            // print_r(file_get_contents($data['image']));
+            $imagepath = file_get_contents($data['image']); //Due to Upload path heroku restriction we changed folder to DB
+            // $image = Input::file('image');
+            // $filename = $image->getClientOriginalName();
+            // $base64 = base64_encode($filename);
             auth()->user()->profile->update(array_merge(
                 $data,
                 ['image' => $imagepath]
